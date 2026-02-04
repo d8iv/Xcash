@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>أكس كاش - البرنامج المحاسبي المتطور</title>
+<!-- خط حديث وجذاب -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* الجسم والخطوط */
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* الألوان */
+:root {
+  --color-primary: #4CAF50;
+  --color-secondary: #ffffff;
+  --color-accent: #FF5722;
+  --color-gray: #555;
+  --color-dark: #222;
+  --bg-gradient: linear-gradient(135deg, #e0f7fa, #ffffff);
+}
+
+/* رأس الموقع */
+header {
+  background-color: #ffffff;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+header h1 {
+  color: var(--color-primary);
+  font-size: 28px;
+  font-weight: 700;
+}
+nav {
+  display: flex;
+  gap: 20px;
+}
+nav a {
+  color: var(--color-gray);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+nav a:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* القسم الرئيسي (البطل) */
+.hero {
+  background: var(--bg-gradient);
+  padding: 70px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.hero h2 {
+  font-size: 42px;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+.hero p {
+  font-size: 18px;
+  max-width: 700px;
+  margin-bottom: 30px;
+  color: #555;
+}
+.btn {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s;
+}
+.btn:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+/* المميزات */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 50px 20px;
+  background-color: #fff;
+}
+.feature-card {
+  background-color: #fafafa;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.feature-card h3 {
+  color: var(--color-primary);
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+.feature-card p {
+  font-size: 15px;
+  color: #666;
+}
+
+/* قسم التحميل */
+.download {
+  padding: 50px 20px;
+  background-color: #f4f6f8;
+  text-align: center;
+}
+.download h2 {
+  font-size: 36px;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+.download p {
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #555;
+}
+.download a {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s;
+}
+.download a:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+/* من نحن */
+.about {
+  padding: 50px 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.about h2 {
+  font-size: 36px;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+.about p {
+  max-width: 800px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* تواصل معنا */
+.contact {
+  padding: 50px 20px;
+  background-color: #f4f6f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact h2 {
+  font-size: 36px;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+.contact form {
+  max-width: 600px;
+  width: 100%;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+form input {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+form button {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+form button:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+/* زر واتساب المباشر */
+.whatsapp-btn {
+  margin-top: 20px;
+  padding: 15px 30px;
+  background-color: #25D366;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 18px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s, transform 0.3s;
+}
+.whatsapp-btn:hover {
+  background-color: #1DA851;
+  transform: scale(1.05);
+}
+
+/* حقوق الطبع والنشر */
+.footer {
+  background-color: #222;
+  color: #ccc;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* صفحات خاصة مخفية */
+.page {
+  display: none;
+  padding: 50px 20px;
+  background-color: #fff;
+}
+.page.active {
+  display: block;
+}
+
+/* استجابة لمختلف الشاشات */
+@media(max-width: 768px){
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+  header h1 {
+    font-size: 24px;
+  }
+  nav {
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hero h2 {
+    font-size: 30px;
+  }
+  .feature-card {
+    padding: 20px;
+  }
+  .download h2, .about h2, .contact h2 {
+    font-size: 28px;
+  }
+  .btn, .download a, .whatsapp-btn {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- رأس الموقع -->
+<header>
+  <h1>أكس كاش</h1>
+  <nav>
+    <a href="#home" onclick="showPage('home')">الرئيسية</a>
+    <a href="#download" onclick="showPage('download')">تحميل البرنامج</a>
+    <a href="#about" onclick="showPage('about')">من نحن</a>
+    <a href="#contact" onclick="showPage('contact')">تواصل معنا</a>
+    <a href="#privacy" onclick="showPage('privacy')">سياسة الخصوصية</a>
+  </nav>
+</header>
+
+<!-- الصفحة الرئيسية -->
+<section class="hero page active" id="home">
+  <h2>برنامج أكس كاش المحاسبي الأمثل لأعمالك</h2>
+  <p>برنامج محاسبي سهل، آمن، لا يحتاج لمواصفات عالية، يدعم متاجر المتوسطة، بدون الحاجة لاتصال دائم بالإنترنت.</p>
+  <a href="#download" class="btn" onclick="showPage('download')">تحميل الآن</a>
+</section>
+
+<!-- المميزات -->
+<section class="features" id="features">
+  <div class="feature-card">
+    <h3>سهل الاستخدام</h3>
+    <p>واجهة بسيطة وسهلة للمستخدمين من جميع المستويات.</p>
+  </div>
+  <div class="feature-card">
+    <h3>آمن ونظيف</h3>
+    <p>كود برمجي نظيف يحفظ بياناتك بأمان تام.</p>
+  </div>
+  <div class="feature-card">
+    <h3>لا يحتاج إنترنت دائم</h3>
+    <p>يعمل بدون اتصال دائم بالإنترنت، مع تحديثات عند الحاجة.</p>
+  </div>
+  <div class="feature-card">
+    <h3>يدعم المتاجر المتوسطة</h3>
+    <p>مناسب لأعمال المتاجر ذات الحجم المتوسط.</p>
+  </div>
+  <!-- مميزات إضافية -->
+  <div class="feature-card">
+    <h3>مجاناً بالكامل</h3>
+    <p>البرنامج مجاني تماماً بعد الاشتراك الدائم، بدون أي تكاليف مخفية.</p>
+  </div>
+  <div class="feature-card">
+    <h3>محدث باستمرار</h3>
+    <p>نقوم بإضافة تحديثات مستمرة لضمان أفضل أداء وأمان.</p>
+  </div>
+  <div class="feature-card">
+    <h3>دعم فني سريع</h3>
+    <p>فريق الدعم جاهز لمساعدتك في أي وقت عبر الواتساب.</p>
+  </div>
+  <div class="feature-card">
+    <h3>تصاميم عصرية</h3>
+    <p>واجهة حديثة ومتجاوبة مع جميع الأجهزة.</p>
+  </div>
+</section>
+
+<!-- تحميل البرنامج -->
+<section class="download page" id="download">
+  <h2>حمل برنامج أكس كاش الآن</h2>
+  <p>استمتع بواجهة حديثة، وأداء سريع، وأمان كامل، مع تحميل سهل ومباشر.</p>
+  <a href="#" target="_blank">تحميل البرنامج للويندوز</a>
+</section>
+
+<!-- من نحن -->
+<section class="about page" id="about">
+  <h2>من نحن</h2>
+  <p>
+    أسامة الجماز، مطور ومبرمج عالمي في مجال التكنولوجيا، يسعى لتقديم حلول برمجية مبتكرة تساعد أصحاب الأعمال على إدارة حساباتهم بكفاءة وسهولة. نحن فريق مكرس لتطوير برامج حديثة ومتقدمة تلبي احتياجات السوق وتوفر تجربة مستخدم فريدة.
+  </p>
+</section>
+
+<!-- سياسة الخصوصية -->
+<section class="page" id="privacy">
+  <h2>سياسة الخصوصية</h2>
+  <p>
+    <strong>سياسة الخصوصية</strong><br/><br/>
+    نحن في شركة أكس كاش نلتزم بحماية خصوصيتك والحفاظ على سرية معلوماتك الشخصية. عند استخدامك لبرنامجنا، نقوم بجمع بعض البيانات الأساسية لتحسين خدماتنا وتوفير تجربة مستخدم مميزة، وتشمل البيانات التي قد نجمعها:
+    <ul>
+      <li>اسم المستخدم</li>
+      <li>رقم الهاتف أو الواتساب</li>
+      <li>معلومات الاستخدام والتفاعل مع البرنامج</li>
+    </ul>
+    نؤكد أننا لا نشارك معلوماتك مع أي طرف خارجي بدون موافقتك الصريحة، ونستخدم تقنيات حديثة لضمان أمان وسرية البيانات. جميع البيانات تُخزن بطريقة مشفرة، ونلتزم بعدم استخدامها إلا لتحسين خدماتنا وتطوير البرنامج.
+    <br/><br/>
+    <strong>حقوقك:</strong><br/>
+    - يمكنك طلب حذف بياناتك في أي وقت.<br/>
+    - يمكنك التواصل معنا لطلب معرفة البيانات التي نحتفظ بها عنك.<br/><br/>
+    نحن نحتفظ بحق تحديث سياسة الخصوصية هذه من وقت لآخر، وأي تعديلات ستكون سارية فور نشرها على الموقع.
+  </p>
+</section>
+
+<!-- تواصل معنا -->
+<section class="contact page" id="contact">
+  <h2>تواصل معنا</h2>
+  <form onsubmit="return false;">
+    <input type="text" placeholder="اسمك" required />
+    <input type="text" id="whatsappNumber" placeholder="رقم الواتساب" />
+    <button type="button" onclick="openWhatsApp()">تواصل عبر الواتساب</button>
+  </form>
+  <!-- زر مباشر للواتساب -->
+  <a class="whatsapp-btn" href="#" id="directWhatsApp" target="_blank">تواصل عبر الواتساب</a>
+</section>
+
+<!-- حقوق الطبع والنشر -->
+<div class="footer">
+  حقوق الطبع والنشر © 2024 أكس كاش. جميع الحقوق محفوظة.
+</div>
+
+<script>
+// دالة لعرض الصفحة
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById(pageId);
+  if (page) page.classList.add('active');
+}
+
+// وظيفة لفتح واتساب مباشرة
+function openWhatsApp() {
+  const number = document.getElementById('whatsappNumber').value.trim();
+  if (number) {
+    window.open(`https://wa.me/${number}`, '_blank');
+  } else {
+    alert('يرجى إدخال رقم الواتساب أولاً');
+  }
+}
+
+// تحديث رابط الواتساب المباشر عند إدخال الرقم
+document.getElementById('whatsappNumber').addEventListener('input', function() {
+  const num = this.value.trim();
+  const btn = document.getElementById('directWhatsApp');
+  if (num) {
+    btn.href = `https://wa.me/${num}`;
+  } else {
+    btn.href = '#';
+  }
+});
+</script>
+
+</body>
+</html>
